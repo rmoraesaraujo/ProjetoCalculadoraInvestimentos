@@ -31,27 +31,26 @@ export function generateReturnsArray(
     totalAmount: startingAmount,
   };
 
-  const returnArrays = [referenceInvestmentObject];
+  const returnArray = [referenceInvestmentObject];
   for (
     let timeReference = 1;
     timeReference <= finalTimeHorizon;
     timeReference++
   ) {
     const totalAmount =
-      returnArrays[timeReference - 1].totalAmount * finalReturnRate +
+      returnArray[timeReference - 1].totalAmount * finalReturnRate +
       monthlyContribution;
     const interestReturns =
-      returnArrays[timeReference - 1].totalAmount * finalReturnRate;
+      returnArray[timeReference - 1].totalAmount * (finalReturnRate - 1);
     const investedAmount = startingAmount + monthlyContribution * timeReference;
     const totalInterestReturns = totalAmount - investedAmount;
-    returnArrays.push({
-      investedAmount: investedAmount,
-      interestReturns: interestReturns,
-      totalInterestReturns: totalInterestReturns,
+    returnArray.push({
+      investedAmount,
+      interestReturns,
+      totalInterestReturns,
       month: timeReference,
-      totalAmount: totalAmount,
+      totalAmount,
     });
   }
-  return returnArrays
+  return returnArray;
 }
- 
