@@ -176,6 +176,6 @@ for (const formElement of form) {
 }
 
 clearFormButton.addEventListener('click', clearForm);
-form.addEventListener('submit', renderProgression);
+// form.addEventListener('submit', renderProgression);
 // calculateButton.addEventListener('click', renderProgression);
 // CALCULATE BUTTON COM O TYPE=SUBMITI EM NO ARQUIVO HTML
