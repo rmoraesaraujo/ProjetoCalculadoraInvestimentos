@@ -9,6 +9,14 @@ const clearFormButton = document.getElementById('clear-form');
 let doughnutChartReference = {};
 let progressionChartReference = {};
 
+const columsArray = [
+  { columLabel: 'Total investido', accessor: 'investedAmount' },
+  { columLabel: 'Rendimento mensal', accessor: 'interestReturns' },
+  { columLabel: 'Rendimento total', accessor: 'totalInterestReturns' },
+  { columLabel: 'Mês', accessor: 'month' },
+  { columLabel: 'Quantia total', accessor: 'totalAmount' },
+];
+
 function formatCurrency(value) {
   return value.toFixed(2);
 }
@@ -46,7 +54,7 @@ function renderProgression(evt) {
     returnRate,
     returnRatePeriod
   );
-  console.log(returnArray);
+
   const finalInvestmentObject = returnArray[returnArray.length - 1];
 
   doughnutChartReference = new Chart(finalMoneyChart, {
@@ -176,6 +184,6 @@ for (const formElement of form) {
 }
 
 clearFormButton.addEventListener('click', clearForm);
-// form.addEventListener('submit', renderProgression);
+form.addEventListener('submit', renderProgression);
 // calculateButton.addEventListener('click', renderProgression);
 // CALCULATE BUTTON COM O TYPE=SUBMITI EM NO ARQUIVO HTML
