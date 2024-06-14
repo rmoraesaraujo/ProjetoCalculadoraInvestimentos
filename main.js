@@ -152,6 +152,15 @@ function resetCharts() {
   ) {
     doughnutChartReference.destroy();
     progressionChartReference.destroy();
+
+    const tBody = document.getElementsByTagName('tbody')[0];
+    const tHead = document.getElementsByTagName('thead')[0];
+    while (tBody.rows.length > 0) {
+      tBody.deleteRow(0);
+    }
+    if (tHead) {
+      tHead.remove(tHead);
+    }
   }
 }
 
